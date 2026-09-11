@@ -3,6 +3,7 @@
 import { getUserFromCookie } from "@/lib/session";
 import { createUser, getUsers } from "@/lib/users";
 import { useEffect, useState } from "react";
+import Modal from "@/components/Modal";
 
 const roleLabel: Record<string, string> = {
     admin: 'ผู้ดูแล ระบบ',
@@ -21,6 +22,8 @@ const UsersPage = () => {
 
   const currentUser = getUserFromCookie();
   const isAdmin = currentUser?.role === 'admin';
+
+  const [showModal, setShowModal] = useState(false)
 
   const loadUsers = async () => {
     try {
@@ -111,6 +114,23 @@ const UsersPage = () => {
           </div>
         ))}
       </div>
+
+      <Modal isOpen={showModal} onClose={() => setShowModal(false)} title="เพิ่มหนังสือใหม่">
+          <form>
+            <input type="text" placeholder="ชื่อเรื่อง (Title)" className="border rounded px-3 py-2 w-full mb-3" />
+            <input type="text" placeholder="ชื่อผู้แต่ง (Author / Creator)" className="border rounded px-3 py-2 w-full mb-3" />
+            <input type="text" placeholder="เลขเรียกหนังสือ (Call Number)" className="border rounded px-3 py-2 w-full mb-3" />
+            <input type="text" placeholder="หมวดหมู่/หัวเรื่อง (Subject / Keywords)" className="border rounded px-3 py-2 w-full mb-3" />
+            <input type="text" placeholder="ข้อมูลการพิมพ์ (Publication Info)" className="border rounded px-3 py-2 w-full mb-3" />
+            <input type="text" placeholder="เลข ISBN" className="border rounded px-3 py-2 w-full mb-3" />
+            <input type="text" placeholder="จำนวนหน้า" className="border rounded px-3 py-2 w-full mb-3" />
+            <input type="text" placeholder="ขนาดความสูงของเล่ม" className="border rounded px-3 py-2 w-full mb-3" />
+            <input type="text" placeholder="ภาพประกอบ" className="border rounded px-3 py-2 w-full mb-3" />
+            <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded w-full">
+              บันทึก
+            </button>
+          </form>
+      </Modal>
     </div>
   )
 }
