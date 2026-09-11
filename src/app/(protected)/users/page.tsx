@@ -93,7 +93,7 @@ const UsersPage = () => {
           {isAdmin && <option value="librarian">บรรณารักษ์</option>}
           {isAdmin && <option value="admin">ผู้ดูแลระบบ</option>}
         </select>
-        <button type="submit" className="col-span-4 bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+        <button type="submit" className="col-span-4 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 cursor-pointer">
           เพิ่มสมาชิก
         </button>
       </form>
