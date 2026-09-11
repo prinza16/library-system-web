@@ -1,6 +1,6 @@
 import { getToken } from './session';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getUsers() {
   const res = await fetch(`${API_URL}/users`, {

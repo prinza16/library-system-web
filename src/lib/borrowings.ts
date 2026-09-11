@@ -1,6 +1,6 @@
 import { getToken } from './session';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 async function authFetch(path: string, options: RequestInit = {}) {
   const res = await fetch(`${API_URL}${path}`, {
